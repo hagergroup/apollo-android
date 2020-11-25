@@ -48,7 +48,7 @@ object HttpCachePolicy {
   /**
    * Cache policy with provided expiration configuration
    */
-  class ExpirePolicy : Policy {
+  open class ExpirePolicy : Policy {
     constructor(fetchStrategy: FetchStrategy) : super(fetchStrategy, 0, null, false)
 
     constructor(
