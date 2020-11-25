@@ -1,7 +1,7 @@
 // Signature format: 3.0
 package com.apollographql.apollo.cache.http {
 
-  public final class ApolloHttpCache {
+  public class ApolloHttpCache {
     ctor public ApolloHttpCache(HttpCacheStore);
     ctor public ApolloHttpCache(HttpCacheStore, com.apollographql.apollo.Logger?);
     method public void clear();
@@ -10,15 +10,25 @@ package com.apollographql.apollo.cache.http {
     method public okhttp3.Response! read(String, boolean);
     method public void remove(String);
     method public void removeQuietly(String);
+    field protected final HttpCacheStore cacheStore;
+    field protected final com.apollographql.apollo.api.internal.ApolloLogger! logger;
   }
 
-  public final class DiskLruHttpCacheStore {
+  public class DiskLruHttpCacheStore {
     ctor public DiskLruHttpCacheStore(File, long);
     ctor public DiskLruHttpCacheStore(com.apollographql.apollo.cache.http.internal.FileSystem, File, long);
     method public HttpCacheRecord cacheRecord(String);
     method public HttpCacheRecordEditor cacheRecordEditor(String);
     method public void delete();
     method public void remove(String);
+    field protected com.apollographql.apollo.cache.http.internal.DiskLruCache! cache;
+    field protected final ReadWriteLock cacheLock;
+  }
+
+  public class HttpCacheInterceptor implements okhttp3.Interceptor {
+    method public okhttp3.Response! intercept(okhttp3.Interceptor.Chain!);
+    field protected final com.apollographql.apollo.cache.http.ApolloHttpCache! cache;
+    field protected final com.apollographql.apollo.api.internal.ApolloLogger! logger;
   }
 
 }

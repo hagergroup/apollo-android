@@ -38,9 +38,11 @@ package com.apollographql.apollo.api.cache.http {
     field public static final com.apollographql.apollo.api.cache.http.HttpCachePolicy.Policy NETWORK_ONLY;
   }
 
-  public static final class HttpCachePolicy.ExpirePolicy extends com.apollographql.apollo.api.cache.http.HttpCachePolicy.Policy {
-    method public com.apollographql.apollo.api.cache.http.HttpCachePolicy.ExpirePolicy expireAfter(long expireTimeout, error.NonExistentClass expireTimeUnit);
-    method public com.apollographql.apollo.api.cache.http.HttpCachePolicy.ExpirePolicy expireAfterRead();
+  public static class HttpCachePolicy.ExpirePolicy extends com.apollographql.apollo.api.cache.http.HttpCachePolicy.Policy {
+    ctor public HttpCachePolicy.ExpirePolicy(com.apollographql.apollo.api.cache.http.HttpCachePolicy.FetchStrategy fetchStrategy);
+    ctor public HttpCachePolicy.ExpirePolicy(com.apollographql.apollo.api.cache.http.HttpCachePolicy.FetchStrategy fetchStrategy, long expireTimeout, error.NonExistentClass? expireTimeUnit, boolean expireAfterRead);
+    method public final com.apollographql.apollo.api.cache.http.HttpCachePolicy.ExpirePolicy expireAfter(long expireTimeout, error.NonExistentClass expireTimeUnit);
+    method public final com.apollographql.apollo.api.cache.http.HttpCachePolicy.ExpirePolicy expireAfterRead();
   }
 
   public enum HttpCachePolicy.FetchStrategy {
