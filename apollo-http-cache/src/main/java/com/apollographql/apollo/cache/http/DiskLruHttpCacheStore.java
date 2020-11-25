@@ -13,7 +13,7 @@ import okio.Sink;
 import okio.Source;
 import org.jetbrains.annotations.NotNull;
 
-public final class DiskLruHttpCacheStore implements HttpCacheStore {
+public class DiskLruHttpCacheStore implements HttpCacheStore {
   private static final int VERSION = 99991;
   private static final int ENTRY_HEADERS = 0;
   private static final int ENTRY_BODY = 1;
@@ -22,8 +22,8 @@ public final class DiskLruHttpCacheStore implements HttpCacheStore {
   private final FileSystem fileSystem;
   private final File directory;
   private final long maxSize;
-  private DiskLruCache cache;
-  private final ReadWriteLock cacheLock = new ReentrantReadWriteLock();
+  protected DiskLruCache cache;
+  protected final ReadWriteLock cacheLock = new ReentrantReadWriteLock();
 
   public DiskLruHttpCacheStore(@NotNull File directory, long maxSize) {
     this(FileSystem.SYSTEM, directory, maxSize);

@@ -21,10 +21,10 @@ import static com.apollographql.apollo.cache.http.Utils.copyResponseBody;
 import static com.apollographql.apollo.cache.http.Utils.skipStoreResponse;
 
 @SuppressWarnings("WeakerAccess")
-public final class ApolloHttpCache implements HttpCache {
+public class ApolloHttpCache implements HttpCache {
 
-  private final HttpCacheStore cacheStore;
-  private final ApolloLogger logger;
+  protected final HttpCacheStore cacheStore;
+  protected final ApolloLogger logger;
 
   public ApolloHttpCache(@NotNull final HttpCacheStore cacheStore) {
     this(cacheStore, null);

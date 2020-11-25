@@ -49,9 +49,9 @@ object HttpCachePolicy {
    * Cache policy with provided expiration configuration
    */
   class ExpirePolicy : Policy {
-    internal constructor(fetchStrategy: FetchStrategy) : super(fetchStrategy, 0, null, false)
+    constructor(fetchStrategy: FetchStrategy) : super(fetchStrategy, 0, null, false)
 
-    private constructor(
+    constructor(
         fetchStrategy: FetchStrategy,
         expireTimeout: Long,
         expireTimeUnit: TimeUnit?,
